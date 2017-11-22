@@ -1,17 +1,28 @@
 source ~/.zplug/init.zsh
 
+# Make sure we are in 256 colors mode if supported
+zplug "chrissicool/zsh-256color"
+# Get more completions
 zplug "zsh-users/zsh-completions"
+# Syntax highlighting for the prompt
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# Set the theme to dracula
 zplug "dracula/zsh", as:theme
 
-# Configuration
+# Store 1000 lines of history into a file
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory autocd beep extendedglob nomatch notify
+
+setopt appendhistory
+setopt autocd
+setopt beep
+setopt extendedglob
+setopt nomatch
+setopt notify
 bindkey -e
 
-# Colors
+# Enable more colors
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
@@ -26,7 +37,7 @@ man() {
 }
 eval $(dircolors -b $HOME/.ls_colors/LS_COLORS)
 
-# Completion
+# Configure and initialize completion
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
